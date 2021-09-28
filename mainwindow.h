@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMouseEvent>
-#include <QPaintEvent>
-#include <QPainter>
+
+#include "drawwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,16 +18,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-protected:
-    void mousePressEvent(QMouseEvent*e)override;
-    void mouseMoveEvent(QMouseEvent*e)override;
-    void mouseReleaseEvent(QMouseEvent*e)override;
-    void paintEvent(QPaintEvent*e)override;
-
 private:
     Ui::MainWindow *ui;
-    bool isPressed = false;
-    QPoint curr,temp,label_pos_start,label_pos_end;
-    QList<QRect> Rects;
+    DrawWidget *dw;
 };
 #endif // MAINWINDOW_H
